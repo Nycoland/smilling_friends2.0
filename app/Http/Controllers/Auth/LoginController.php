@@ -14,7 +14,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        // Testando pra ver se essa bagaça vai
+        // Depois do login ser redirecionado para a home
         return redirect()->route('home');
     }
 }
