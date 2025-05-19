@@ -9,7 +9,7 @@ class ClinicaController extends Controller
 {
     public function index()
     {
-        $clininas = Clinica::all();
+        $clinicas = Clinica::all();
         return view('clinicas.index', compact('clinicas'));
     }
 
