@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        // $this->middleware('guest')->except('logout');
     }
 
     public function showLoginForm()
@@ -29,13 +29,24 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended(route('home'));
+          $user =  Auth::user();
+          $token = $user->createToken('auth-token')->plainTextToken;
+
+
+            return response()->json([
+                'success' => true,
+                'token' => $token,
+                'user' => $user
+            ]);
+
+
         }
 
-        return back()->withErrors([
-            'email' => 'Suas informações de acesso não são válidas.',
-        ])->onlyInput('email');
+        return response()->json([
+            'success' => false,
+            'message' => 'Credenciais inválidas'
+            
+        ],401);
     }
     
     //Aqui quando o usuário deixa a sessão de login 

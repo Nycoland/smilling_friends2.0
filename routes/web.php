@@ -15,7 +15,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/clinicas', [ClinicaController::class, 'index'])->name('clinicas');
+    // Route::get('/clinicas', [ClinicaController::class, 'index'])->name('clinicas');
     Route::get('/doencas', [DoencaController::class, 'index'])->name('doencas');
     Route::get('/ongs', [OngController::class, 'index'])->name('ongs');
 });

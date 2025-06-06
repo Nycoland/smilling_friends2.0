@@ -13,7 +13,7 @@ class ClinicaController extends Controller
      */
     public function index()
     {
-        return Clinica::all();
+        return response()->json(['clinicas'=>Clinica::all()]);
     }
 
     /**
