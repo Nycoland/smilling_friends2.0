@@ -18,6 +18,7 @@ class ClinicaController extends Controller
     public function create() 
     {
         return view('clinicas.create');
+
     }
 
 
@@ -32,6 +33,12 @@ class ClinicaController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $request->merge(['image' => $imageName]);
+        }
+        
         Clinica::create($request->all());
 
         return redirect()->route('clinicas.index')->with('success', 'Clínica criada com sucesso!');

@@ -1,19 +1,45 @@
 <?php
 
 return [
+    'paths' => [
+        'api/*', 
+        'sanctum/csrf-cookie',
+        'login',
+        'logout',
+        'register',
+        'user/password'
+    ],
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'allowed_methods' => [
+        'GET',
+        'POST',
+        'PUT',
+        'PATCH',
+        'DELETE',
+        'OPTIONS'
+    ],
 
-    'allowed_methods' => ['*'],
+    'allowed_origins' => [
+        'http://localhost:3000',
+        'http://127.0.0.1:3000'
+    ],
 
-    'allowed_origins' => ['http://localhost:3000'], // Sem barra no final
+    'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'], // Aceita todos os headers
+    'allowed_headers' => [
+        'Content-Type',
+        'Authorization',
+        'X-Requested-With',
+        'Accept',
+        'Access-Control-Allow-Origin',
+    ],
 
-    'exposed_headers' => [],
+    'exposed_headers' => [
+        'Authorization',
+        'X-CSRF-TOKEN'
+    ],
 
-    'max_age' => 0,
+    'max_age' => " * ", // 2 horas
 
-    'supports_credentials' => false,
-
+    'supports_credentials' => true, // Alterado para true se usar cookies/sessões
 ];
