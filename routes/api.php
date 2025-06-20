@@ -5,7 +5,7 @@ use App\Http\Controllers\Api\ClinicaController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
-
+Route::post('/cadastro/cadastre2', [AuthController::class, 'cadastre2']);
 // Comente o grupo com middleware auth:sanctum para liberar acesso temporariamente
 // Route::middleware('auth:sanctum')->group(function(){
 //     Route::get('/clinicas', [ClinicaController::class, 'index']);
